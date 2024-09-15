@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "../css/createGroup.css"
+import "../css/createGroup.css";
 
 const GroupForm = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +8,7 @@ const GroupForm = () => {
     members: [] // Holds selected member IDs and names
   });
   const [users, setUsers] = useState([]); // Holds fetched users
+  const [loggedInUser, setLoggedInUser] = useState(null); // Holds the logged-in user details
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +30,18 @@ const GroupForm = () => {
         navigate('/');
         window.location.reload();
       } else {
-        setUsers(result.data); // Set fetched users
+        const fetchedUsers = result.data;
+        setUsers(fetchedUsers);
+
+        // Find and set the logged-in user
+        const loggedInUser = fetchedUsers.find(user => user.email === email);
+        setLoggedInUser(loggedInUser);
+
+        // Set the logged-in user as a default member
+        setFormData(prevFormData => ({
+          ...prevFormData,
+          members: loggedInUser ? [{ userId: loggedInUser.user_id, userName: loggedInUser.name }] : []
+        }));
       }
     };
 
@@ -48,17 +60,10 @@ const GroupForm = () => {
         }));
 
       setFormData(prevFormData => {
-        // Check if the user is already in members
-        const updatedMembers = prevFormData.members.filter(member =>
-          selectedUsers.some(selectedUser => selectedUser.userId === member.userId)
-        );
-
-        // Add or remove the selected users
         const newMembers = [
           ...prevFormData.members.filter(member => 
             !selectedUsers.some(selectedUser => selectedUser.userId === member.userId)),
-          ...selectedUsers.filter(selectedUser => 
-            !prevFormData.members.some(member => member.userId === selectedUser.userId))
+          ...selectedUsers
         ];
 
         return {
@@ -81,7 +86,7 @@ const GroupForm = () => {
       body: JSON.stringify({
         email,
         groupName: formData.groupName,
-        members: formData.members
+        members: formData.members.map(member => member.userId) // Send only user IDs
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -101,6 +106,12 @@ const GroupForm = () => {
     event.preventDefault();
     console.log(formData);
     await createGroup();
+    
+    // Clear formData after successful group creation
+    setFormData({
+      groupName: "",
+      members: []
+    });
   }
 
   return (
@@ -110,7 +121,7 @@ const GroupForm = () => {
         type="text"
         id="groupName"
         name="groupName"
-        required = "true"
+        required
         value={formData.groupName}
         onChange={changeHandler}
         className="group-form__input"
@@ -119,13 +130,19 @@ const GroupForm = () => {
       <h4 className="group-form__title">Select Members:</h4>
       <select
         name="members"
-        multiple={true}
+        multiple
+        required
         value={formData.members.map(member => member.userId)}
         onChange={changeHandler}
         className="group-form__select"
       >
         {users.map((user) => (
-          <option key={user.user_id} value={user.user_id} user_name={user.name}>
+          <option
+            key={user.user_id}
+            value={user.user_id}
+            user_name={user.name}
+            disabled={loggedInUser && user.user_id === loggedInUser.user_id}
+          >
             {user.name} ({user.email})
           </option>
         ))}
