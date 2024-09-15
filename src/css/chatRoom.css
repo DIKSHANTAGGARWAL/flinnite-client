@@ -1,0 +1,152 @@
+/* Chat room styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.chat-room {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    background-color: #f4f4f9;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: #5a67d8;
+    color: white;
+    font-size: 14px;
+}
+
+.members-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    background-color: #4a5568;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.messages-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.date-separator {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 12px;
+    color: #888;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    max-width: 60%;
+    position: relative;
+}
+
+.message.self {
+    background-color: #edf2f7;
+    /* margin-right: 0;
+    padding-right: 0; */
+    align-self: flex-start;
+}
+
+.message.other {
+    background-color: #e6fffa;
+    align-self: flex-end;
+}
+
+.timestamp {
+    font-size: 10px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.input-container {
+    display: flex;
+    padding: 10px;
+    background-color: #f4f4f9;
+    border-top: 1px solid #ddd;
+}
+
+input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.send-btn {
+    padding: 10px 16px;
+    background-color: #5a67d8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.members-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+}
+
+h3 {
+    margin-top: 0;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+.close-btn {
+    display: block;
+    margin-top: 20px;
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    background-color: #e53e3e;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
