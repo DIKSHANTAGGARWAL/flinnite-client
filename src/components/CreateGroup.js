@@ -137,14 +137,15 @@ const GroupForm = () => {
         className="group-form__select"
       >
         {users.map((user) => (
-          <option
+            user.email !== localStorage.getItem("userEmail")  && 
+          (<option
             key={user.user_id}
             value={user.user_id}
             user_name={user.name}
             disabled={loggedInUser && user.user_id === loggedInUser.user_id}
           >
             {user.name} ({user.email})
-          </option>
+          </option>)
         ))}
       </select>
 
