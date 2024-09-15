@@ -1,0 +1,87 @@
+
+  
+  /* Container for tasks and form */
+  .container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto; 
+  }
+  
+  /* Task List Heading */
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  /* Task card styles */
+  .task {
+    background-color: #e3f2fd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .task h3 {
+    margin: 0;
+    color: #1565c0;
+  }
+  
+  .task p {
+    margin: 5px 0 0;
+    color: #424242;
+  }
+  
+  /* Form styles */
+  form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form input,
+  form textarea {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  form input::placeholder,
+  form textarea::placeholder {
+    color: #999;
+  }
+  
+  form textarea {
+    resize: none;
+    height: 80px;
+  }
+  
+  form button {
+    padding: 12px;
+    background-color: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #1976d2;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      width: 90%;
+    }
+  }
+  
+  
