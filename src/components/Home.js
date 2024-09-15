@@ -43,6 +43,7 @@ function Home() {
     const renderGroup = (item) => (
         <div key={item.group_id} onClick={() => toGroup(item.group_id)} className='home-group'>
             <h2>{item.name}</h2>
+            <p>{item.description}</p>
         </div>
     );
 

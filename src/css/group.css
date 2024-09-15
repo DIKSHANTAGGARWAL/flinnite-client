@@ -1,0 +1,58 @@
+/* Group Page Container */
+.group-page-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  /* Tabs Container */
+  .tabs-container {
+    display: flex;
+    justify-content: space-around;
+    background-color: #e5e5e5;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  /* Tab */
+  .tab {
+    flex: 1;
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #555;
+    
+  }
+  
+  .tab:hover {
+    background-color: #d1d1d1;
+  }
+  
+  /* Active Tab */
+  .tab.active {
+    background-color: green;
+    color: white;
+  }
+  
+  /* Content Container */
+  .content-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Specific Section Styling */
+  .tasks-section, .chat-section {
+    padding: 20px;
+    text-align: left;
+  }
+  

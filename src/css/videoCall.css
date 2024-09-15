@@ -1,9 +1,9 @@
 .video-call-container {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     height: 100vh;
     background-color: #282c34;
-    color: white;
+    color: white; */
   }
   
   .video-grid {
@@ -18,21 +18,21 @@
   }
   
   .my-video, .peer-video {
-    width: 300px;
+    /* width: 300px;
     height: 200px;
     border: 2px solid #61dafb;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: cover; */
   }
   
   .video-header {
-    height: 100px;
+    /* height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #20232a;
     color: #61dafb;
-    font-size: 1.5rem;
+    font-size: 1.5rem; */
   }
   
   .video-grid::-webkit-scrollbar {
@@ -40,8 +40,8 @@
   }
   
   .video-grid::-webkit-scrollbar-thumb {
-    background-color: #61dafb;
-    border-radius: 5px;
+    /* background-color: #61dafb;
+    border-radius: 5px; */
   }
   
   .video-grid::-webkit-scrollbar-track {
@@ -49,37 +49,37 @@
   }
   
   button {
-    padding: 10px 20px;
+    /* padding: 10px 20px;
     background-color: #61dafb;
     border: none;
     border-radius: 5px;
     color: white;
-    cursor: pointer;
+    cursor: pointer; */
   }
   
   button:hover {
-    background-color: #21a1f1;
+    /* background-color: #21a1f1; */
   }
   
 
   .video-call-container {
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f9;
+    background-color: #f4f4f9; */
 }
 
 .video-grid {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 10px;
-    padding: 10px;
+    padding: 10px; */
 }
 
 .my-video, .peer-video {
-    width: 100%;
+    /* width: 100%;
     height: auto;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); */
 }
