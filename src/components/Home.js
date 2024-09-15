@@ -20,6 +20,7 @@ function Home() {
 
 
     const getGroups = async () => {
+        // console.log("groups ");
         const email = localStorage.getItem("userEmail")
         let result = await fetch(`http://localhost:5000/engage/getGroups`, {
             method: 'POST',
@@ -29,6 +30,7 @@ function Home() {
             },
         })
         result = await result.json();
+        console.log(result);
         if (result.status == 404) {
             alert(result.message)
             localStorage.removeItem("userEmail")
@@ -72,7 +74,7 @@ function Home() {
       <p>My Groups</p>
       <div>
         {
-            // groups.map(e)
+           groups.map(e)
         }
       </div>
 

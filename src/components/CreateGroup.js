@@ -50,25 +50,34 @@ const GroupForm = () => {
 
   const changeHandler = (event) => {
     const { name, options } = event.target;
-
+  
     if (name === "members") {
-      const selectedUsers = Array.from(options)
+      // Get the currently selected options
+      const selectedUserIds = Array.from(options)
         .filter(option => option.selected)
-        .map(option => ({
-          userId: option.value,
-          userName: option.getAttribute('user_name')
-        }));
-
+        .map(option => option.value);
+  
       setFormData(prevFormData => {
-        const newMembers = [
-          ...prevFormData.members.filter(member => 
-            !selectedUsers.some(selectedUser => selectedUser.userId === member.userId)),
-          ...selectedUsers
-        ];
-
+        // Create a new members array with toggling functionality
+        let updatedMembers = [...prevFormData.members];
+  
+        selectedUserIds.forEach(userId => {
+          const isAlreadySelected = updatedMembers.some(member => member.userId === userId);
+          if (isAlreadySelected) {
+            // If the user is already selected, remove them
+            updatedMembers = updatedMembers.filter(member => member.userId !== userId);
+          } else {
+            // If the user is not selected, find and add them
+            const newUser = users.find(user => user.user_id === userId);
+            if (newUser) {
+              updatedMembers.push({ userId: newUser.user_id, userName: newUser.name });
+            }
+          }
+        });
+  
         return {
           ...prevFormData,
-          members: newMembers
+          members: updatedMembers // Update the members state
         };
       });
     } else {
@@ -78,6 +87,8 @@ const GroupForm = () => {
       }));
     }
   };
+  
+  
 
   const createGroup = async () => {
     const email = localStorage.getItem("userEmail");
@@ -106,11 +117,9 @@ const GroupForm = () => {
     event.preventDefault();
     console.log(formData);
     await createGroup();
-    
-    // Clear formData after successful group creation
     setFormData({
       groupName: "",
-      members: []
+      members: loggedInUser ? [{ userId: loggedInUser.user_id, userName: loggedInUser.name }] : []
     });
   }
 
@@ -137,15 +146,16 @@ const GroupForm = () => {
         className="group-form__select"
       >
         {users.map((user) => (
-            user.email !== localStorage.getItem("userEmail")  && 
-          (<option
-            key={user.user_id}
-            value={user.user_id}
-            user_name={user.name}
-            disabled={loggedInUser && user.user_id === loggedInUser.user_id}
-          >
-            {user.name} ({user.email})
-          </option>)
+          user.email !== localStorage.getItem("userEmail") && (
+            <option
+              key={user.user_id}
+              value={user.user_id}
+              user_name={user.name}
+              disabled={loggedInUser && user.user_id === loggedInUser.user_id}
+            >
+              {user.name} ({user.email})
+            </option>
+          )
         ))}
       </select>
 
