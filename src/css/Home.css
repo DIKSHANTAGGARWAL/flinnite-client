@@ -1,0 +1,6 @@
+.home-group{
+    border: 5px solid black;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}

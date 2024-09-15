@@ -6,6 +6,8 @@ import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import CreateGroup from './components/CreateGroup';
+import Group from './components/Group';
+import ChatRoom from './components/ChatRoom';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path='signup' element={<Signup/>}/>
           <Route path='login' element={<Login/>}/>
           <Route path="createGroup" element={<CreateGroup/>}/>
+          <Route path='group/:id' element={<Group/>}/>
+          <Route path='group/chat/:id/' element={<ChatRoom/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

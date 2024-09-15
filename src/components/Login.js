@@ -12,9 +12,9 @@ function Login() {
 
     useEffect(() => {
         const email = localStorage.getItem("userEmail");
-        // if (email) {
-        //     navigate("/");
-        // }
+        if (email) {
+            navigate("/");
+        }
     }, []);
     const Login = async () => {
 

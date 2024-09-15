@@ -15,9 +15,9 @@ function Signup() {
 
     useEffect(() => {
         const email = localStorage.getItem("userEmail");
-        // if (email) {
-        //     navigate("/");
-        // }
+        if (email) {
+            navigate("/");
+        }
     }, []); 
     const Signup = async () => {
 
