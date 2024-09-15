@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {CreateGroup} from './CreateGroup'
 
 function Home() {
     const navigate=useNavigate()
@@ -62,17 +63,20 @@ function Home() {
     function e(index,item){
         <h2>{item.name}</h2>
     }
+    function makeGroup(){
+        navigate("createGroup");
+    }
     return (
     <div>
       <h1>My Teams</h1>
       <p>My Groups</p>
       <div>
         {
-            groups.map(e)
+            // groups.map(e)
         }
       </div>
 
-      <button>Add Group</button>
+      <button onClick={makeGroup}>Add Group</button>
 
     </div>
   )

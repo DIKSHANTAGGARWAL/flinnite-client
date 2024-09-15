@@ -5,6 +5,7 @@ import MainContainer from './components/MainContainer';
 import Home from './components/Home';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import CreateGroup from './components/CreateGroup';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path='' element={<Home/>}/>
           <Route path='signup' element={<Signup/>}/>
           <Route path='login' element={<Login/>}/>
+          <Route path="createGroup" element={<CreateGroup/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
