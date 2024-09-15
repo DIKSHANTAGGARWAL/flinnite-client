@@ -68,7 +68,7 @@ function Home() {
       <p>My Groups</p>
       <div>
         {
-            groups.map(e)
+            // groups.map(e)
         }
       </div>
 
