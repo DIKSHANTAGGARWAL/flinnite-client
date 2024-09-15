@@ -1,7 +1,65 @@
-.bg{
-    background-color: aqua;
-}
-.dim{
-    height: 500px;
-    width: 500px;
-}
+/* GroupForm.css */
+
+.group-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .group-form__label {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .group-form__input {
+    padding: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .group-form__title,
+  .group-form__selected-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .group-form__select {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    background-color: #fff;
+  }
+  
+  .group-form__selected-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .group-form__selected-item {
+    font-size: 14px;
+    padding: 5px 0;
+  }
+  
+  .group-form__button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .group-form__button:hover {
+    background-color: #45a049;
+  }  
