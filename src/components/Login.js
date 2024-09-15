@@ -14,9 +14,9 @@ function Login() {
 
     useEffect(() => {
         const email = localStorage.getItem("userEmail");
-        // if (email) {
-        //     navigate("/");
-        // }
+        if (email) {
+            navigate("/");
+        }
     }, []);
     const Login = async () => {
 
@@ -26,7 +26,7 @@ function Login() {
         }
 
         let result = await fetch(
-            `http://localhost:5000/login`,
+            `http://localhost:5000/auth/login`,
             {
                 method: "POST",
                 body: JSON.stringify({ email, password }),
@@ -65,7 +65,7 @@ function Login() {
                 type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value); }}
             />
             <input className="signup-input" id={error && !password && "input-error"}
-                type="text" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }}
+                type="password" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }}
             />
             <a className="signup-btn" onClick={() => navigate("/signup")}>Signup</ a>
             <button onClick={loginToast} value="Sign Up" class="signup-btn" >

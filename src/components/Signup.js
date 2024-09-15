@@ -15,9 +15,9 @@ function Signup() {
 
     useEffect(() => {
         const email = localStorage.getItem("userEmail");
-        // if (email) {
-        //     navigate("/");
-        // }
+        if (email) {
+            navigate("/");
+        }
     }, []); 
     const Signup = async () => {
 
@@ -27,7 +27,7 @@ function Signup() {
         }
 
         let result = await fetch(
-            `http://localhost:5000/register`,
+            `http://localhost:5000/auth/register`,
             {
                 method: "POST",
                 body: JSON.stringify({ name, email, password}),
