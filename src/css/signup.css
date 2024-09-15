@@ -1,19 +1,83 @@
-#input-error {
-    /* padding: 10px 22px; */
-    border: 1px solid red;
+/* Wrapper to ensure centering */
+.signup-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Light background to differentiate the form */
+    margin: 0;
+    padding: 0;
 }
-.signup-container{
+
+/* Container for the form */
+.signup-container {
     display: flex;
     flex-direction: column;
-    margin: 10px;
-    padding: 50px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
-.signup-input{
+/* Style for input fields */
+.signup-input {
+    width: 100%;
     padding: 10px;
-    margin: 20px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
 }
 
-.signup-container button{
+/* Input fields when there's an error */
+#input-error {
+    border-color: red !important;
+}
+
+/* Style for signup button */
+.signup-btn {
+    display: inline-block;
+    width: 100%;
     padding: 10px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.signup-btn:hover {
+    background-color: #0056b3;
+}
+
+.signup-btn:active {
+    background-color: #004085;
+}
+
+/* Style for the already have an account section */
+.signup-already-have-an-acc {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+}
+
+/* Style for the login link */
+.signup-already-have-an-acc a {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.signup-already-have-an-acc a:hover {
+    color: #0056b3;
 }

@@ -61,24 +61,41 @@ function Signup() {
         navigate("/login");
     };
     return (
-        <div className='signup-container'>
-            <input className="signup-input" id={error && !name && "input-error"}
-                type="text" placeholder="Name" value={name} onChange={(e) => { setName(e.target.value); }}
-            />
-            <input className="signup-input" id={error && !email && "input-error"}
-                type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value); }}
-            />
-            <input className="signup-input" id={error && !password && "input-error"}
-                type="text" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }}
-            />
+        <div className="signup-page"> {/* Centering wrapper */}
+            <div className='signup-container'>
+                <input 
+                    className="signup-input" 
+                    id={error && !name && "input-error"}
+                    type="text" 
+                    placeholder="Name" 
+                    value={name} 
+                    onChange={(e) => { setName(e.target.value); setError(false); }}
+                />
+                <input 
+                    className="signup-input" 
+                    id={error && !email && "input-error"}
+                    type="text" 
+                    placeholder="Email" 
+                    value={email} 
+                    onChange={(e) => { setEmail(e.target.value); setError(false); }}
+                />
+                <input 
+                    className="signup-input" 
+                    id={error && !password && "input-error"}
+                    type="password" 
+                    placeholder="Password" 
+                    value={password} 
+                    onChange={(e) => { setPassword(e.target.value); setError(false); }}
+                />
 
-<div class="signup-already-have-an-acc">
-            Already have an account? <a onClick={toLogin}>Login</a> <br />
-          </div>
+                <div className="signup-already-have-an-acc">
+                    Already have an account? <a onClick={toLogin}>Login</a>
+                </div>
 
-            <button onClick={signUpToast} value="Sign Up" class="signup-btn" >
-                Signup
-            </button>
+                <button onClick={signUpToast} className="signup-btn">
+                    Signup
+                </button>
+            </div>
         </div>
     )
 }
