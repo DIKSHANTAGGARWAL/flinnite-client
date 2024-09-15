@@ -5,8 +5,6 @@ import '../css/login.css'
 
 
 function Login() {
-
-
     const navigate = useNavigate();
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
@@ -26,7 +24,7 @@ function Login() {
         }
 
         let result = await fetch(
-            `http://localhost:5000/login`,
+            `http://localhost:5000/auth/login`,
             {
                 method: "POST",
                 body: JSON.stringify({ email, password }),
@@ -60,17 +58,29 @@ function Login() {
         navigate("/signup");
     };
     return (
-        <div className='signup-container'>
-            <input className="signup-input" id={error && !email && "input-error"}
-                type="text" placeholder="Email" value={email} onChange={(e) => { setEmail(e.target.value); }}
-            />
-            <input className="signup-input" id={error && !password && "input-error"}
-                type="text" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value); }}
-            />
-            <a className="signup-btn" onClick={() => navigate("/signup")}>Signup</ a>
-            <button onClick={loginToast} value="Sign Up" class="signup-btn" >
-                Login
-            </button>
+        <div className="login-page"> {/* Centering wrapper */}
+            <div className='login-container'>
+                <input 
+                    className="login-input" 
+                    id={error && !email && "input-error"}
+                    type="text" 
+                    placeholder="Email" 
+                    value={email} 
+                    onChange={(e) => { setEmail(e.target.value); setError(false); }}
+                />
+                <input 
+                    className="login-input" 
+                    id={error && !password && "input-error"}
+                    type="password" 
+                    placeholder="Password" 
+                    value={password} 
+                    onChange={(e) => { setPassword(e.target.value); setError(false); }}
+                />
+                <button onClick={loginToast} className="login-btn">
+                    Login
+                </button>
+                <a className="signup-link" onClick={() => navigate("/signup")}>Signup</a> {/* Styled as a side text */}
+            </div>
         </div>
     )
 }
