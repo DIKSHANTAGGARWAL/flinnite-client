@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {CreateGroup} from './CreateGroup'
+import '../css/Home.css'
 
 function Home() {
     const navigate=useNavigate()
@@ -29,6 +30,8 @@ function Home() {
             },
         })
         result = await result.json();
+        console.log(result)
+
         if (result.status == 404) {
             alert(result.message)
             localStorage.removeItem("userEmail")
@@ -59,9 +62,16 @@ function Home() {
         }
     }
     
-    
-    function e(index,item){
-        <h2>{item.name}</h2>
+    function toGroup(id){
+        navigate(`/group/${id}`)
+    }
+
+    function e(item,index){
+        return(
+            <div onClick={()=>toGroup(item.group_id)} className='home-group' >
+                <h2>{item.name}</h2>
+            </div>
+        )
     }
     function makeGroup(){
         navigate("createGroup");
@@ -78,7 +88,7 @@ function Home() {
       <p>My Groups</p>
       <div>
         {
-            // groups.map(e)
+            groups.map(e)
         }
       </div>
 

@@ -95,6 +95,7 @@ const GroupForm = () => {
       console.log("Error happened");
     } else {
       console.log("Group created successfully");
+      navigate('/')
     }
   }
 
