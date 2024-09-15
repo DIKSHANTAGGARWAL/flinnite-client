@@ -1,103 +1,80 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import {CreateGroup} from './CreateGroup'
-import '../css/Home.css'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../css/Home.css';
 
 function Home() {
-    const navigate=useNavigate()
+    const navigate = useNavigate();
     
     useEffect(() => {
-        const email = localStorage.getItem('userEmail')
+        const email = localStorage.getItem('userEmail');
         if (!email) {
-            // alert("Please Login")
-            navigate('/login')
+            navigate('/login');
         }
-
         getGroups();
-    }, [])
+    }, []);
 
-    const [groups,setGroups]=useState([''])
-    const [users,setUsers]=useState([''])
-
+    const [groups, setGroups] = useState([]);
 
     const getGroups = async () => {
-        // console.log("groups ");
-        const email = localStorage.getItem("userEmail")
+        const email = localStorage.getItem("userEmail");
         let result = await fetch(`http://localhost:5000/engage/getGroups`, {
             method: 'POST',
             body: JSON.stringify({ email }),
             headers: {
                 'Content-Type': 'application/json',
             },
-        })
+        });
         result = await result.json();
-        console.log(result)
 
-        if (result.status == 404) {
-            alert(result.message)
-            localStorage.removeItem("userEmail")
-            navigate('/')
+        if (result.status === 404) {
+            alert(result.message);
+            localStorage.removeItem("userEmail");
+            navigate('/');
             window.location.reload();
         } else {
-            setGroups(result.data)
+            setGroups(result.data);
         }
-    }
+    };
 
-    const getUsers = async () => {
-        const email = localStorage.getItem("userEmail")
-        let result = await fetch(`http://localhost:5000/auth/getUsers`, {
-            method: 'POST',
-            body: JSON.stringify({ email }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-        result = await result.json();
-        if (result.status == 404) {
-            alert(result.message)
-            localStorage.removeItem("userEmail")
-            navigate('/')
-            window.location.reload();
-        } else {
-            setUsers(result.data)
-        }
-    }
-    
-    function toGroup(id){
-        navigate(`/group/${id}`)
-    }
+    const toGroup = (id) => {
+        navigate(`/group/${id}`);
+    };
 
-    function e(item,index){
-        return(
-            <div onClick={()=>toGroup(item.group_id)} className='home-group' >
-                <h2>{item.name}</h2>
-            </div>
-        )
-    }
-    function makeGroup(){
+    const renderGroup = (item) => (
+        <div key={item.group_id} onClick={() => toGroup(item.group_id)} className='home-group'>
+            <h2>{item.name}</h2>
+        </div>
+    );
+
+    const makeGroup = () => {
         navigate("createGroup");
-    }
+    };
 
-    function logout(){
-        localStorage.clear()
-        window.location.reload()
-    }
+    const logout = () => {
+        localStorage.clear();
+        window.location.reload();
+    };
 
     return (
-    <div>
-      <h1>My Teams</h1>
-      <p>My Groups</p>
-      <div>
-        {
-            groups.map(e)
-        }
-      </div>
+        <div className="home-container">
+            <header className="home-header">
+                <h1>Welcome to My Teams</h1>
+                <button className="logout-btn" onClick={logout}>Logout</button>
+            </header>
 
-      <button onClick={makeGroup}>Add Group</button>
-      <button onClick={logout}>Logout</button>
-
-    </div>
-  )
+            <section className="group-section">
+                <h2>My Groups</h2>
+                <div className="group-grid">
+                    {groups.length > 0 ? (
+                        groups.map(renderGroup)
+                    ) : (
+                        <p className="no-groups">No groups available. Create a new one!</p>
+                    )}
+                </div>
+                <button className="add-group-btn" onClick={makeGroup}>+ Create New Group</button>
+            </section>
+        </div>
+    );
 }
 
-export default Home
+export default Home;

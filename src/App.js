@@ -8,6 +8,7 @@ import Login from './components/Login';
 import CreateGroup from './components/CreateGroup';
 import Group from './components/Group';
 import ChatRoom from './components/ChatRoom';
+import VideoCall from './components/VideoCall';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           <Route path='login' element={<Login/>}/>
           <Route path="createGroup" element={<CreateGroup/>}/>
           <Route path='group/:id' element={<Group/>}/>
-          <Route path='group/chat/:id/' element={<ChatRoom/>}/>
+          {/* <Route path='group/chat/:id/' element={<ChatRoom/>}/> */}
+          {/* <Route path='group/video/' element={<VideoCall/>}/> */}
         </Route>
       </Routes>
     </BrowserRouter>

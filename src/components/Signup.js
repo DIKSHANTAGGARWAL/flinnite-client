@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from "react-hot-toast";
-import '../css/signup.css'
-
+import '../css/signup.css';
 
 function Signup() {
-
-
     const navigate = useNavigate();
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -18,54 +15,49 @@ function Signup() {
         if (email) {
             navigate("/");
         }
-    }, []); 
-    const Signup = async () => {
+    }, [navigate]);
 
+    const Signup = async () => {
         if (!name || !email || !password) {
             setError(true);
             throw new Error("Enter Details");
         }
 
-        let result = await fetch(
-            `http://localhost:5000/auth/register`,
-            {
-                method: "POST",
-                body: JSON.stringify({ name, email, password}),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        );
+        let result = await fetch(`http://localhost:5000/auth/register`, {
+            method: "POST",
+            body: JSON.stringify({ name, email, password }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
         result = await result.json();
         if (result.status != 200) {
             throw new Error(result.message);
-        }else{
-            localStorage.setItem("userEmail",email)
-            navigate('/')
+        } else {
+            localStorage.setItem("userEmail", email);
+            navigate('/');
         }
         return result;
     };
 
     const signUpToast = () =>
         toast.promise(Signup(), {
-            loading: "Signing In",
-            success: (result) => {
-                return result.message;
-            },
-            error: (result) => {
-                return result.message;
-            },
+            loading: "Signing Up",
+            success: (result) => result.message,
+            error: (result) => result.message,
         });
 
     const toLogin = () => {
         navigate("/login");
     };
+
     return (
         <div className="signup-page">
             <div className='signup-container'>
+                <h2>Sign Up</h2>
                 <input 
                     className="signup-input" 
-                    id={error && !name && "input-error"}
+                    id={error && !name ? "input-error" : ""}
                     type="text" 
                     placeholder="Name" 
                     value={name} 
@@ -73,7 +65,7 @@ function Signup() {
                 />
                 <input 
                     className="signup-input" 
-                    id={error && !email && "input-error"}
+                    id={error && !email ? "input-error" : ""}
                     type="text" 
                     placeholder="Email" 
                     value={email} 
@@ -81,23 +73,21 @@ function Signup() {
                 />
                 <input 
                     className="signup-input" 
-                    id={error && !password && "input-error"}
+                    id={error && !password ? "input-error" : ""}
                     type="password" 
                     placeholder="Password" 
                     value={password} 
                     onChange={(e) => { setPassword(e.target.value); setError(false); }}
                 />
-
                 <div className="signup-already-have-an-acc">
                     Already have an account? <a onClick={toLogin}>Login</a>
                 </div>
-
                 <button onClick={signUpToast} className="signup-btn">
-                    Signup
+                    Sign Up
                 </button>
             </div>
         </div>
-    )
+    );
 }
 
-export default Signup
+export default Signup;

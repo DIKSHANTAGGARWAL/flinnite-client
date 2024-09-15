@@ -1,79 +1,84 @@
-/* Wrapper to ensure centering */
+/* Page wrapper */
 .login-page {
-    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0; /* Light background to differentiate the form */
-    margin: 0;
-    padding: 0;
+    height: 100vh;
+    background-color: #f5f7fa;
 }
 
-/* Container for the form */
+/* Container */
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    background-color: white;
+    padding: 40px;
     width: 100%;
     max-width: 400px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-/* Style for input fields */
+/* Heading */
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Input fields */
 .login-input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     font-size: 16px;
-    border: 2px solid #ddd;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
 }
 
-/* Input fields when there's an error */
-#input-error {
-    border-color: red !important;
+.login-input:focus {
+    border-color: #4CAF50;
+    outline: none;
 }
 
-/* Style for login button */
+.input-error {
+    border-color: #ff6b6b;
+}
+
+/* Buttons */
 .login-btn {
-    display: inline-block;
     width: 100%;
-    padding: 10px;
-    background-color: #28a745;
+    padding: 12px;
+    background-color: #4CAF50;
     color: white;
-    font-size: 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease;
-    margin-bottom: 10px;
+    font-size: 16px;
+    margin-top: 20px;
 }
 
 .login-btn:hover {
-    background-color: #218838;
+    background-color: #45a049;
 }
 
-.login-btn:active {
-    background-color: #1e7e34;
-}
-
-/* Style for signup link as side text */
-.signup-link {
+/* Signup link */
+.signup-text {
+    margin-top: 15px;
     font-size: 14px;
-    color: #007bff;
-    text-decoration: none;
+    color: #555;
+}
+
+.signup-link {
+    color: #4CAF50;
     cursor: pointer;
-    margin-top: 10px;
-    display: block;
-    text-align: right;
 }
 
 .signup-link:hover {
-    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Error Message */
+.error-message {
+    color: #ff6b6b;
+    font-size: 14px;
 }
