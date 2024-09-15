@@ -23,7 +23,7 @@ function Signup() {
             throw new Error("Enter Details");
         }
 
-        let result = await fetch(`http://localhost:5000/auth/register`, {
+        let result = await fetch(`${process.env.REACT_APP_server_url}/auth/register`, {
             method: "POST",
             body: JSON.stringify({ name, email, password }),
             headers: {

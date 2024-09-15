@@ -23,7 +23,7 @@ function Login() {
         }
 
         let result = await fetch(
-            `http://localhost:5000/auth/login`,
+            `${process.env.REACT_APP_server_url}/auth/login`,
             {
                 method: "POST",
                 body: JSON.stringify({ email, password }),

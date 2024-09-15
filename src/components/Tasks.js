@@ -15,7 +15,7 @@ function Tasks() {
 
   const addTaskHandler = async () => {
     try {
-      const result = await fetch(`http://localhost:5000/engage/createTasks`, {
+      const result = await fetch(`${process.env.REACT_APP_server_url}/engage/createTasks`, {
         method: 'POST',
         body: JSON.stringify({
           title: taskData.taskTitle,
@@ -42,7 +42,7 @@ function Tasks() {
 
   const getAllTasks = async () => {
     try {
-      const result = await fetch(`http://localhost:5000/engage/getTasks`, {
+      const result = await fetch(`${process.env.REACT_APP_server_url}/engage/getTasks`, {
         method: 'POST',
         body: JSON.stringify({ groupId: id }),
         headers: {
@@ -94,7 +94,7 @@ function Tasks() {
 
   const markTaskComplete = async (taskId) => {
     try {
-      const result = await fetch(`http://localhost:5000/engage/markComplete`, {
+      const result = await fetch(`${process.env.REACT_APP_server_url}/engage/markComplete`, {
         method: 'POST',
         body: JSON.stringify({ taskId }),
         headers: {

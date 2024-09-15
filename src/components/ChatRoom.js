@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import io from 'socket.io-client';
 import '../css/chatRoom.css'
-const socket = io('http://localhost:5000');
+const socket = io(`${process.env.REACT_APP_server_url}`);
 
 function ChatRoom() {
     const [messages, setMessages] = useState([]);

@@ -4,7 +4,7 @@ import SimplePeer from 'simple-peer';
 import '../css/videoCall.css';  // Import the custom CSS
 import { useParams } from 'react-router-dom';
 
-const socket = io('http://localhost:5000');
+const socket = io(`${process.env.REACT_APP_server_url}`);
 
 function VideoCall() {
     const [peers, setPeers] = useState([]);

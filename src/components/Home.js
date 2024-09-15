@@ -17,7 +17,7 @@ function Home() {
 
     const getGroups = async () => {
         const email = localStorage.getItem("userEmail");
-        let result = await fetch(`http://localhost:5000/engage/getGroups`, {
+        let result = await fetch(`${process.env.REACT_APP_server_url}/engage/getGroups`, {
             method: 'POST',
             body: JSON.stringify({ email }),
             headers: {

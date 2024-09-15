@@ -14,7 +14,7 @@ const GroupForm = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       const email = localStorage.getItem("userEmail");
-      let result = await fetch(`http://localhost:5000/auth/getUsers`, {
+      let result = await fetch(`${process.env.REACT_APP_server_url}/auth/getUsers`, {
         method: 'POST',
         body: JSON.stringify({ email }),
         headers: {
@@ -92,7 +92,7 @@ const GroupForm = () => {
 
   const createGroup = async () => {
     const email = localStorage.getItem("userEmail");
-    let result = await fetch(`http://localhost:5000/engage/addGroup`, {
+    let result = await fetch(`${process.env.REACT_APP_server_url}/engage/addGroup`, {
       method: 'POST',
       body: JSON.stringify({
         email,
