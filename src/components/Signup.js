@@ -61,7 +61,7 @@ function Signup() {
         navigate("/login");
     };
     return (
-        <div className="signup-page"> {/* Centering wrapper */}
+        <div className="signup-page">
             <div className='signup-container'>
                 <input 
                     className="signup-input" 
