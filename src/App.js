@@ -19,7 +19,7 @@ function App() {
           <Route path='login' element={<Login/>}/>
           <Route path="createGroup" element={<CreateGroup/>}/>
           <Route path='group/:id' element={<Group/>}/>
-          {/* <Route path='group/vc/:id' element={<VideoCall/>}/> */}
+          <Route path='group/vc/:id' element={<VideoCall/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

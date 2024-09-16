@@ -14,7 +14,7 @@ function ChatRoom() {
     const [showMembers, setShowMembers] = useState(false);
     const messagesEndRef = useRef(null);
     const navigate = useNavigate();
-
+    const params=useParams()
     useEffect(() => {
         const email = localStorage.getItem('userEmail');
         if (!email) {
@@ -74,11 +74,15 @@ function ChatRoom() {
         setShowMembers(!showMembers);
     };
 
+    const toVc=()=>{
+        navigate(`/group/vc/${params.id}`)
+    }
+
     return (
         <div className="chat-room">
             <div className="chat-header">
                 <h2>{groupName}</h2>
-                {/* <button className="members-btn" onClick={navigate('/group/vc/:id')}>VideoCall</button> */}
+                <button className="members-btn" onClick={toVc}>VideoCall</button>
 
                 <button className="members-btn" onClick={toggleMembers}>Show Members</button>
             </div>
