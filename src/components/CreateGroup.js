@@ -92,7 +92,7 @@ const GroupForm = () => {
   
   const createGroupToast = () =>
     toast.promise(createGroup(), {
-        loading: "Logging In...",
+        loading: "Creating New Group...",
         success: (result) => result.message,
         error: (result) => result.message,
     });
