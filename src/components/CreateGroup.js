@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../css/createGroup.css";
+import toast from "react-hot-toast";
+
 
 const GroupForm = () => {
   const [formData, setFormData] = useState({
@@ -88,7 +90,12 @@ const GroupForm = () => {
     }
   };
   
-  
+  const createGroupToast = () =>
+    toast.promise(createGroup(), {
+        loading: "Logging In...",
+        success: (result) => result.message,
+        error: (result) => result.message,
+    });
 
   const createGroup = async () => {
     const email = localStorage.getItem("userEmail");
@@ -108,16 +115,19 @@ const GroupForm = () => {
 
     if (result.status === 404) {
       console.log("Error happened");
+      throw new Error(result.message);
     } else {
       console.log("Group created successfully");
       navigate('/')
     }
+    return result;
+
   }
 
   const submitHandler = async (event) => {
     event.preventDefault();
     console.log(formData);
-    await createGroup();
+    await createGroupToast();
     setFormData({
       groupName: "",
       members: loggedInUser ? [{ userId: loggedInUser.user_id, userName: loggedInUser.name }] : []
