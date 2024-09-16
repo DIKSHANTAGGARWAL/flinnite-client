@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import TasksPage from './Tasks'; // import your task component
-import ChatPage from './ChatRoom';   // import your chat component
-import '../css/group.css';           // Import your CSS
+import TasksPage from './Tasks'; 
+import ChatPage from './ChatRoom';   
+import '../css/group.css';           
 
 const GroupPage = () => {
-  // State to track the current active tab (either 'tasks' or 'chat')
   const [activeTab, setActiveTab] = useState('tasks');
 
   return (

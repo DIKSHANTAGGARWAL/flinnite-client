@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import SimplePeer from 'simple-peer';
-import '../css/videoCall.css';  // Import the custom CSS
+import '../css/videoCall.css';  
 import { useParams } from 'react-router-dom';
 
 const socket = io(`${process.env.REACT_APP_server_url}`);
@@ -13,7 +13,7 @@ function VideoCall() {
     const videoGrid = useRef();
     const peersRef = useRef([]);
     const params = useParams();
-    const groupId = params.id; // Assuming groupId is passed via URL params
+    const groupId = params.id; 
 
     useEffect(() => {
         navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((stream) => {

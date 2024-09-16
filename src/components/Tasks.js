@@ -32,15 +32,14 @@ function Tasks() {
         console.log("Error happened");
       } else {
         console.log("Task added successfully");
-        // Add the new task directly to the state without fetching all tasks again
         const newTask = {
-          task_id: data.task_id, // Assuming the API response includes this
+          task_id: data.task_id, 
           title: taskData.taskTitle,
           taskDetails: taskData.taskDetails,
           isComplete: false,
         };
         setAllTasks((prevTasks) => [...prevTasks, newTask]);
-        setShowPopup(false); // Close the popup after adding the task
+        setShowPopup(false); 
       }
     } catch (error) {
       console.log("Error:", error);
@@ -110,7 +109,6 @@ function Tasks() {
 
       if (result.status === 200) {
         console.log("Task marked as complete");
-        // Update the state directly to mark the task as complete
         setAllTasks(prevTasks =>
           prevTasks.map(task =>
             task.task_id === taskId ? { ...task, isComplete: true } : task
@@ -133,7 +131,7 @@ function Tasks() {
   }, []);
 
   useEffect(() => {
-    filterTasks(allTasks); // Filter the tasks whenever the `filter` state changes
+    filterTasks(allTasks); 
   }, [filter, allTasks]);
 
   return (

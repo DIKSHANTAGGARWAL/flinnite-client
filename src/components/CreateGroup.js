@@ -7,10 +7,10 @@ import toast from "react-hot-toast";
 const GroupForm = () => {
   const [formData, setFormData] = useState({
     groupName: "",
-    members: [] // Holds selected member IDs and names
+    members: [] 
   });
-  const [users, setUsers] = useState([]); // Holds fetched users
-  const [loggedInUser, setLoggedInUser] = useState(null); // Holds the logged-in user details
+  const [users, setUsers] = useState([]); 
+  const [loggedInUser, setLoggedInUser] = useState(null); 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,11 +35,9 @@ const GroupForm = () => {
         const fetchedUsers = result.data;
         setUsers(fetchedUsers);
 
-        // Find and set the logged-in user
         const loggedInUser = fetchedUsers.find(user => user.email === email);
         setLoggedInUser(loggedInUser);
 
-        // Set the logged-in user as a default member
         setFormData(prevFormData => ({
           ...prevFormData,
           members: loggedInUser ? [{ userId: loggedInUser.user_id, userName: loggedInUser.name }] : []
@@ -54,22 +52,18 @@ const GroupForm = () => {
     const { name, options } = event.target;
   
     if (name === "members") {
-      // Get the currently selected options
       const selectedUserIds = Array.from(options)
         .filter(option => option.selected)
         .map(option => option.value);
   
       setFormData(prevFormData => {
-        // Create a new members array with toggling functionality
         let updatedMembers = [...prevFormData.members];
   
         selectedUserIds.forEach(userId => {
           const isAlreadySelected = updatedMembers.some(member => member.userId === userId);
           if (isAlreadySelected) {
-            // If the user is already selected, remove them
             updatedMembers = updatedMembers.filter(member => member.userId !== userId);
           } else {
-            // If the user is not selected, find and add them
             const newUser = users.find(user => user.user_id === userId);
             if (newUser) {
               updatedMembers.push({ userId: newUser.user_id, userName: newUser.name });
@@ -79,7 +73,7 @@ const GroupForm = () => {
   
         return {
           ...prevFormData,
-          members: updatedMembers // Update the members state
+          members: updatedMembers 
         };
       });
     } else {
@@ -104,7 +98,7 @@ const GroupForm = () => {
       body: JSON.stringify({
         email,
         groupName: formData.groupName,
-        members: formData.members.map(member => member.userId) // Send only user IDs
+        members: formData.members.map(member => member.userId) 
       }),
       headers: {
         'Content-Type': 'application/json',

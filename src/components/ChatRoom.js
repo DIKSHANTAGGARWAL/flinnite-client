@@ -23,7 +23,6 @@ function ChatRoom() {
             setUserEmail(email);
         }
 
-        // Join the group room and get group info
         socket.emit('joinGroup', groupId);
 
         socket.on('chatHistory', (history) => {
@@ -31,14 +30,12 @@ function ChatRoom() {
             scrollToBottom();
         });
 
-        // Listen for group name and members
         socket.emit('getGroupDetails', groupId);
         socket.on('groupDetails', ({ name, members }) => {
             setGroupName(name);
             setMembers(members);
         });
 
-        // Listen for new messages
         socket.on('newMessage', (message) => {
             setMessages((prevMessages) => [...prevMessages, message]);
             scrollToBottom();
@@ -81,6 +78,8 @@ function ChatRoom() {
         <div className="chat-room">
             <div className="chat-header">
                 <h2>{groupName}</h2>
+                {/* <button className="members-btn" onClick={navigate('/group/vc/:id')}>VideoCall</button> */}
+
                 <button className="members-btn" onClick={toggleMembers}>Show Members</button>
             </div>
 
